@@ -9,6 +9,8 @@ class Contact extends Sendinblue
 
     public function __construct()
     {
+        parent::__construct();
+        
         $this->url = $this->api_base_url . 'contacts/';
     }
 
