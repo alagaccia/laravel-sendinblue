@@ -1,5 +1,5 @@
 {
-    "name": "alagaccia/sendinblue",
+    "name": "alagaccia/laravel-sendinblue",
     "description": "Sendinblue API for Laravel Projects",
     "type": "library",
     "license": "NLPL",
