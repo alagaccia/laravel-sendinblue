@@ -14,6 +14,6 @@ class SendinbluServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/sendinblue.php' => config_path('sendinblue.php'),
-        ]);
+        ], 'sendinblue-config');
     }
 }
