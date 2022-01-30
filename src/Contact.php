@@ -16,7 +16,7 @@ class Contact extends Sendinblue
     {
         $method_url = $this->url;
 
-        $res = \Http::withHeaders($this->headers)->post($method_url, [
+        $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'updateEnabled' => false,
                 'listIds' => [$list_id ?? $this->getListId()],
                 'email' => $email,
@@ -30,7 +30,7 @@ class Contact extends Sendinblue
     {
         $method_url = $this->url . urlencode($email);
 
-        $res = \Http::withHeaders($this->headers)->put($method_url, [
+        $res = \Http::withHeaders($this->api_headers)->put($method_url, [
                 'listIds' => [$list_id ?? $this->getListId()],
                 'attributes' => $ATTRIBUTES,
             ]);
@@ -42,7 +42,7 @@ class Contact extends Sendinblue
     {
         $method_url = $this->url . urlencode($email);
 
-        $res = \Http::withHeaders($this->headers)->delete($method_url);
+        $res = \Http::withHeaders($this->api_headers)->delete($method_url);
 
         return $res;
     }
