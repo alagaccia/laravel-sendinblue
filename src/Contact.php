@@ -25,7 +25,7 @@ class Contact extends Sendinblue
                 'attributes' => $ATTRIBUTES,
             ]);
 
-        return $res;
+        return $res->body();
     }
 
     public function update($email, $ATTRIBUTES, $list_id = null)
@@ -37,7 +37,7 @@ class Contact extends Sendinblue
                 'attributes' => $ATTRIBUTES,
             ]);
 
-        return $res;
+        return $res->body();
     }
 
     public function delete($email)
@@ -46,7 +46,7 @@ class Contact extends Sendinblue
 
         $res = \Http::withHeaders($this->api_headers)->delete($method_url);
 
-        return $res;
+        return $res->body();
     }
 
     public function getInfo($email)
@@ -55,7 +55,7 @@ class Contact extends Sendinblue
 
         $res = \Http::withHeaders($this->api_headers)->get($method_url);
 
-        return $res;
+        return $res->body();
     }
 
 }
