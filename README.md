@@ -33,6 +33,10 @@ Run the following Artisan command in your terminal to copy the environment varia
 ```
 php artisan vendor:publish --provider="AndreaLagaccia\Sendinblue\SendinblueServiceProvider"
 ```
+Choose the preference and press ENTER
+```
+Provider: AndreaLagaccia\Sendinblue\SendinbluServiceProvider
+```
 Now you have a `config/sendinblue.php` config file, where you can set the API_KEY and your favorite LIST_ID.
 You can also write your Sendinblue variables in the .env file as follow:
 ```
