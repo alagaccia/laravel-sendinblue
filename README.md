@@ -31,7 +31,7 @@ Laravel 5.4 and older needs to include `SendinblueServiceProvider` in your `conf
 ## <a name="config-publish"></a> Publishing the configuration file
 Run the following Artisan command in your terminal to copy the environment variables:
 ```
-php artisan vendor:publish --provider="AndreaLagaccia\Sendinblue\SendinblueServiceProvider" --tag="config"
+php artisan vendor:publish --provider="AndreaLagaccia\Sendinblue\SendinblueServiceProvider" --tag="sendinblue-config"
 ```
 Now you have a `config/sendinblue.php` config file, where you can set the API_KEY and your favorite LIST_ID.
 You can also write your Sendinblue variables in the .env file as follow:
