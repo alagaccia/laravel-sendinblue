@@ -1,0 +1,11 @@
+{
+    "name": "alagaccia/sendinblue",
+    "description": "Sendinblue API for Laravel Projects",
+    "authors": [
+        {
+            "name": "Andrea Lagaccia",
+            "email": "a.lagaccia@gmail.com"
+        }
+    ],
+    "require": {}
+}
