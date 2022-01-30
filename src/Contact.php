@@ -10,7 +10,7 @@ class Contact extends Sendinblue
     public function __construct()
     {
         parent::__construct();
-        
+
         $this->url = $this->api_base_url . 'contacts/';
     }
 
@@ -49,7 +49,7 @@ class Contact extends Sendinblue
         return $res;
     }
 
-    public function info($email)
+    public function getInfo($email)
     {
         $method_url = $this->url . urlencode($email);
 
