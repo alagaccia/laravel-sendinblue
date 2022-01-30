@@ -23,6 +23,6 @@
     },
     "require": {
         "php": "^7.3",
-        "guzzlehttp/guzzle"
+        "guzzlehttp/guzzle": "^7.0.1"
     }
 }
