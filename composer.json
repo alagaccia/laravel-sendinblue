@@ -1,11 +1,25 @@
 {
     "name": "alagaccia/sendinblue",
     "description": "Sendinblue API for Laravel Projects",
+    "type": "library",
+    "license": "NLPL",
     "authors": [
         {
             "name": "Andrea Lagaccia",
             "email": "a.lagaccia@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "AndreaLagaccia\\Sendinblue\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AndreaLagaccia\\Sendinblue\\SendinbluServiceProvider"
+            ]
+        }
+    },
     "require": {}
 }

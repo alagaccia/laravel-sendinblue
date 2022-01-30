@@ -1,7 +1,7 @@
 <?php
-namespace alagaccia\sendinblue;
+namespace AndreaLagaccia\Sendinblue;
 
-use alagaccia\sendinblue\Sendinblue;
+use AndreaLagaccia\Sendinblue\Sendinblue;
 
 class Contact extends Sendinblue
 {

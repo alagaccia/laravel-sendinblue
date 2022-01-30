@@ -1,9 +1,5 @@
 <?php
-/*
- * Sendinblue Class
- */
-
-namespace alagaccia\sendinblue;
+namespace AndreaLagaccia\Sendinblue;
 
 class Sendinblue
 {
