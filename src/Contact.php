@@ -9,7 +9,7 @@ class Contact extends Sendinblue
 
     public function __construct()
     {
-        $this->url = $this->API_BASE_URL . 'contacts/';
+        $this->url = $this->api_base_url . 'contacts/';
     }
 
     public function create($email, $ATTRIBUTES, $list_id = null)
