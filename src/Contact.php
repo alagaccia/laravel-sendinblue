@@ -53,7 +53,7 @@ class Contact extends Sendinblue
     {
         $method_url = $this->url . urlencode($email);
 
-        $res = \Http::withHeaders($this->headers)->get($method_url);
+        $res = \Http::withHeaders($this->api_headers)->get($method_url);
 
         return $res;
     }
