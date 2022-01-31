@@ -40,11 +40,13 @@ class Contact extends Sendinblue
         return $res->body();
     }
 
-    public function delete($email)
+    public function delete($email, $list_id = null)
     {
-        $method_url = $this->url . urlencode($email);
+        $method_url = $this->url . 'lists/' . ($list_id ?? $this->getListId()) . '/contacts/remove';
 
-        $res = \Http::withHeaders($this->api_headers)->delete($method_url);
+        $res = \Http::withHeaders($this->api_headers)->delete($method_url, [
+            'emails' => [$email],
+        ]);
 
         return $res->body();
     }
