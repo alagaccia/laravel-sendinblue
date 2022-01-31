@@ -28,6 +28,20 @@ class Contact extends Sendinblue
         return $res->body();
     }
 
+    public function updateOrCreate($email, $ATTRIBUTES, $list_id = null)
+    {
+        $method_url = $this->url;
+
+        $res = \Http::withHeaders($this->api_headers)->post($method_url, [
+                'updateEnabled' => true,
+                'listIds' => [$list_id ?? $this->getListId()],
+                'email' => $email,
+                'attributes' => $ATTRIBUTES,
+            ]);
+
+        return $res->body();
+    }
+
     public function update($email, $ATTRIBUTES, $list_id = null)
     {
         $method_url = $this->url . urlencode($email);
