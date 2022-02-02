@@ -17,7 +17,7 @@ class Contact extends Sendinblue
     public function create($email, $ATTRIBUTES, $list_ids = null)
     {
         $method_url = $this->url;
-        $listIds = !empty($list_ids) ? $list_ids : $this->getListId();
+        $listIds = !empty($list_ids) ? implode(',', $list_ids) : $this->getListId();
 
         $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'updateEnabled' => false,
@@ -32,7 +32,7 @@ class Contact extends Sendinblue
     public function updateOrCreate($email, $ATTRIBUTES, $list_ids = null)
     {
         $method_url = $this->url;
-        $listIds = !empty($list_ids) ? $list_ids : $this->getListId();
+        $listIds = !empty($list_ids) ? implode(',', $list_ids) : $this->getListId();
 
         $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'updateEnabled' => true,
@@ -47,7 +47,7 @@ class Contact extends Sendinblue
     public function update($email, $ATTRIBUTES, $list_ids = null)
     {
         $method_url = $this->url . urlencode($email);
-        $listIds = !empty($list_ids) ? $list_ids : $this->getListId();
+        $listIds = !empty($list_ids) ? implode(',', $list_ids) : $this->getListId();
 
         $res = \Http::withHeaders($this->api_headers)->put($method_url, [
                 'listIds' => [ $listIds ],
@@ -57,7 +57,7 @@ class Contact extends Sendinblue
         return $res->body();
     }
 
-    public function delete($email, $list_id = null)
+    public function delete($email)
     {
         $method_url = $this->url . urlencode($email);
 
