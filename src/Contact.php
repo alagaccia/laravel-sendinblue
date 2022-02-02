@@ -21,7 +21,7 @@ class Contact extends Sendinblue
 
         $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'updateEnabled' => false,
-                'listIds' => [ $listIds ],
+                'listIds' => [ (int) $listIds ],
                 'email' => $email,
                 'attributes' => $ATTRIBUTES,
             ]);
@@ -36,7 +36,7 @@ class Contact extends Sendinblue
 
         $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'updateEnabled' => true,
-                'listIds' => [ $listIds ],
+                'listIds' => [ (int) $listIds ],
                 'email' => $email,
                 'attributes' => $ATTRIBUTES,
             ]);
@@ -50,7 +50,7 @@ class Contact extends Sendinblue
         $listIds = !empty($list_ids) ? implode(',', $list_ids) : $this->getListId();
 
         $res = \Http::withHeaders($this->api_headers)->put($method_url, [
-                'listIds' => [ $listIds ],
+                'listIds' => [ (int) $listIds ],
                 'attributes' => $ATTRIBUTES,
             ]);
 
