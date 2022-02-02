@@ -14,13 +14,14 @@ class Contact extends Sendinblue
         $this->url = $this->api_base_url . 'contacts/';
     }
 
-    public function create($email, $ATTRIBUTES, $list_id = null)
+    public function create($email, $ATTRIBUTES, $list_ids = null)
     {
         $method_url = $this->url;
+        $listIds = !empty($list_ids) ? $list_ids : $this->getListId();
 
         $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'updateEnabled' => false,
-                'listIds' => [$list_id ?? $this->getListId()],
+                'listIds' => [ $listIds ],
                 'email' => $email,
                 'attributes' => $ATTRIBUTES,
             ]);
@@ -28,13 +29,14 @@ class Contact extends Sendinblue
         return $res->body();
     }
 
-    public function updateOrCreate($email, $ATTRIBUTES, $list_id = null)
+    public function updateOrCreate($email, $ATTRIBUTES, $list_ids = null)
     {
         $method_url = $this->url;
+        $listIds = !empty($list_ids) ? $list_ids : $this->getListId();
 
         $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'updateEnabled' => true,
-                'listIds' => [$list_id ?? $this->getListId()],
+                'listIds' => [ $listIds ],
                 'email' => $email,
                 'attributes' => $ATTRIBUTES,
             ]);
@@ -42,12 +44,13 @@ class Contact extends Sendinblue
         return $res->body();
     }
 
-    public function update($email, $ATTRIBUTES, $list_id = null)
+    public function update($email, $ATTRIBUTES, $list_ids = null)
     {
         $method_url = $this->url . urlencode($email);
+        $listIds = !empty($list_ids) ? $list_ids : $this->getListId();
 
         $res = \Http::withHeaders($this->api_headers)->put($method_url, [
-                'listIds' => [$list_id ?? $this->getListId()],
+                'listIds' => [ $listIds ],
                 'attributes' => $ATTRIBUTES,
             ]);
 
@@ -67,9 +70,6 @@ class Contact extends Sendinblue
     {
         $method_url = $this->url . urlencode($email);
 
-        $res = \Http::withHeaders($this->api_headers)->get($method_url);
-
-        return $res->body();
+        return \Http::withHeaders($this->api_headers)->get($method_url);
     }
-
 }
