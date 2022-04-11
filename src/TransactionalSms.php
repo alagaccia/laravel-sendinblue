@@ -28,3 +28,4 @@ class TransactionalSms extends Sendinblue
 
         return $res->body();
     }
+}
