@@ -27,6 +27,6 @@ class TransactionalSms extends Sendinblue
                 'webUrl' => $this->set_sms_webhook,
             ]);
 
-        return $res->body();
+        return $res->object();
     }
 }
