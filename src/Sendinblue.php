@@ -8,6 +8,7 @@ class Sendinblue
     protected $api_headers;
     protected $list_id;
     protected $sms_sender_name;
+    protected $sms_sender_webhook;
 
     protected const API_BASE_URL = "https://api.sendinblue.com/v3/";
 
@@ -18,6 +19,7 @@ class Sendinblue
         $this->set_api_headers();
         $this->set_list_id();
         $this->set_sms_sender_name();
+        $this->set_sms_webhook();
     }
 
     public function set_api_key()
@@ -28,6 +30,10 @@ class Sendinblue
     public function set_sms_sender_name()
     {
         $this->sms_sender_name = config('sendinblue.SMS_SENDER_NAME') ?? env('SENDINBLUE_SMS_SENDER_NAME');
+    }
+    public function set_sms_sender_name()
+    {
+        $this->set_sms_webhook = config('sendinblue.SMS_WEBHOOK') ?? env('SENDINBLUE_SMS_WEBHOOK') ?? null;
     }
 
     public function set_api_base_url()

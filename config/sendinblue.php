@@ -15,4 +15,5 @@ return [
     'API_KEY' => env('SENDINBLUE_API_KEY'),
     'LIST_ID' => env('SENDINBLUE_LIST_ID'),
     'SMS_SENDER_NAME' => env('SENDINBLUE_SMS_SENDER_NAME'),
+    'SMS_WEBHOOK' => env('SENDINBLUE_SMS_WEBHOOK'),
 ];
