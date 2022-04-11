@@ -20,7 +20,7 @@ class TransactionalSms extends Sendinblue
 
         $res = \Http::withHeaders($this->api_headers)->post($method_url, [
                 'type' => 'transactional',
-                'unicodeEnabled' => 'false',
+                'unicodeEnabled' => false,
                 'sender' => $this->sms_sender_name,
                 'recipient' => $number,
                 'content' => $content,
