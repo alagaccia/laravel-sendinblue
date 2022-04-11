@@ -42,6 +42,7 @@ You can also write your Sendinblue variables in the .env file as follow:
 ```
 SENDINBLUE_API_KEY=
 SENDINBLUE_LIST_ID=
+SENDINBLUE_API_KEY=
 ```
 
 # <a id="usage"></a>  Usage
