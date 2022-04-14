@@ -2,6 +2,7 @@
 namespace AndreaLagaccia\Sendinblue;
 
 use AndreaLagaccia\Sendinblue\Sendinblue;
+use Illuminate\Support\Facades\DB;
 
 class TransactionalSms extends Sendinblue
 {
@@ -24,8 +25,14 @@ class TransactionalSms extends Sendinblue
                 'sender' => $this->sms_sender_name,
                 'recipient' => $number,
                 'content' => $content,
-                'webUrl' => $this->set_sms_webhook,
+                'webUrl' => $this->sms_webhook,
             ]);
+
+        if ( $this->setting_sms_counter_column_name ) {
+            DB::table($this->setting_table_name)->where("{$this->setting_column_name}", "{$this->setting_sms_counter_column_name}")->update([
+                "{$this->setting_sms_counter_value_name}" => $res->remaining_credit,
+            ]);
+        }
 
         return $res->object();
     }
