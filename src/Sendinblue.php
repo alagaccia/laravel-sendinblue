@@ -20,6 +20,7 @@ class Sendinblue
         $this->set_list_id();
         $this->set_sms_sender_name();
         $this->set_sms_webhook();
+        $this->get_list_id();
     }
 
     public function set_api_key()
@@ -56,7 +57,7 @@ class Sendinblue
         $this->list_id = config('sendinblue.LIST_ID') ?? env('SENDINBLUE_LIST_ID');
     }
 
-    public function getListId()
+    public function get_list_id()
     {
         return $this->list_id;
     }
