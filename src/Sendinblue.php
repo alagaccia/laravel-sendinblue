@@ -6,10 +6,6 @@ class Sendinblue
     protected $api_key;
     protected $api_base_url;
     protected $api_headers;
-    protected $setting_table_name;
-    protected $setting_column_name;
-    protected $setting_sms_counter_column_name;
-    protected $setting_sms_counter_value_name;
     protected $sms_sender_name;
     protected $sms_webhook;
     protected $list_id;
@@ -22,10 +18,6 @@ class Sendinblue
         $this->set_api_base_url();
         $this->set_api_headers();
         $this->set_list_id();
-        $this->set_setting_table_name();
-        $this->set_setting_column_name();
-        $this->set_setting_sms_counter_column_name();
-        $this->set_setting_sms_counter_value_name();
         $this->set_sms_sender_name();
         $this->set_sms_webhook();
     }
@@ -47,26 +39,6 @@ class Sendinblue
             'Content-Type' => 'application/json',
             'Api-Key' => config('sendinblue.API_KEY'),
         ];
-    }
-
-    public function set_setting_table_name()
-    {
-        $this->setting_table_name = config('sendinblue.SETTING_TABLE_NAME') ?? env('SENDINBLUE_SETTING_TABLE_NAME');
-    }
-
-    public function set_setting_column_name()
-    {
-        $this->setting_column_name = config('sendinblue.SETTING_COLUMN_NAME') ?? env('SENDINBLUE_SETTING_COLUMN_NAME');
-    }
-
-    public function set_setting_sms_counter_column_name()
-    {
-        $this->setting_sms_counter_column_name = config('sendinblue.SETTING_SMS_COUNTER_COLUMN_NAME') ?? env('SENDINBLUE_SETTINGS_SMS_COUNTER_COLUMN_NAME') ?? null;
-    }
-
-    public function set_setting_sms_counter_value_name()
-    {
-        $this->setting_sms_counter_value_name = config('sendinblue.SETTING_SMS_COUNTER_VALUE_NAME') ?? env('SENDINBLUE_SETTINGS_SMS_COUNTER_VALUE_NAME') ?? null;
     }
 
     public function set_sms_sender_name()

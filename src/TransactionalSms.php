@@ -28,14 +28,6 @@ class TransactionalSms extends Sendinblue
                 'webUrl' => $this->sms_webhook,
             ]);
 
-        if ( $this->setting_sms_counter_column_name ) {
-            DB::table($this->setting_table_name)
-                ->where("{$this->setting_column_name}", "{$this->setting_sms_counter_column_name}")
-                ->update([
-                    "{$this->setting_sms_counter_value_name}" => $res->remaining_credit,
-                ]);
-        }
-
         return $res->object();
     }
 }
