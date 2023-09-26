@@ -26,7 +26,7 @@ class Contact extends Sendinblue
                 'attributes' => $ATTRIBUTES,
             ]);
 
-        return $res->body();
+        return $res;
     }
 
     public function updateOrCreate($email, $ATTRIBUTES, $list_ids = null)
