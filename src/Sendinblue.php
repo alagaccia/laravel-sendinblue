@@ -14,7 +14,7 @@ class Sendinblue
     protected $sms_webhook;
     protected $list_id;
 
-    protected const API_BASE_URL = "https://api.sendinblue.com/v3/";
+    protected const API_BASE_URL = "https://api.brevo.com/v3/";
 
     public function __construct()
     {
