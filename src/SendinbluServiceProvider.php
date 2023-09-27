@@ -12,10 +12,8 @@ class SendinbluServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/sendinblue.php' => config_path('sendinblue.php'),
-            ]);
-        }
+        $this->publishes([
+            __DIR__.'/../config/sendinblue.php' => config_path('sendinblue.php'),
+        ]);
     }
 }
