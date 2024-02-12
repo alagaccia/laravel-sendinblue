@@ -23,7 +23,7 @@ class TransactionalSms extends Sendinblue
                 'type' => 'transactional',
                 'unicodeEnabled' => false,
                 'sender' => $this->sms_sender_name,
-                'recipient' => $number,
+                'recipient' => str_replace(' ', '', $number),
                 'content' => $content,
                 'webUrl' => $this->sms_webhook,
             ]);
