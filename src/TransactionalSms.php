@@ -15,6 +15,7 @@ class TransactionalSms extends Sendinblue
         $this->url = $this->api_base_url . 'transactionalSMS/sms/';
     }
 
+    
     public function send($number, $content)
     {
         $method_url = $this->url;
