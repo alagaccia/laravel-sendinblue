@@ -15,7 +15,7 @@ class TransactionalEmail extends Sendinblue
         $this->url = $this->api_base_url . 'smtp/email';
     }
 
-    public function send(array $to, int $templateId, string $htmlContent, array $params, array $tags = null)
+    public function send(array $to, int $templateId = null, string $htmlContent = null, array $params, array $tags = null)
     {
         $method_url = $this->url;
 
