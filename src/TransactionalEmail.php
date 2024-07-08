@@ -15,7 +15,7 @@ class TransactionalEmail extends Sendinblue
         $this->url = $this->api_base_url . 'smtp/email';
     }
 
-    public function send(array $to, int $templateId, array $params, array $tags = null)
+    public function send(array $to, int $templateId, string $htmlContent, array $params, array $tags = null)
     {
         $method_url = $this->url;
 
@@ -26,7 +26,9 @@ class TransactionalEmail extends Sendinblue
                         'name' => $to['name'] ?? null,
                     ]
                 ],
-                'templateId' => $templateId,
+                'templateId' => $templateId ?? null,
+                'htmlContent' => $htmlContent ?? null,
+                'textContent' => $htmlContent ? strip_tags($htmlContent) : null,
                 'params' => $params,
                 'tags' => $tags,
             ]);
