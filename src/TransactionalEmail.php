@@ -45,7 +45,21 @@ class TransactionalEmail extends Sendinblue
      */ 
     public function getEmails($params)
     {
-        $res = \Http::withHeaders($this->api_headers)->get($this->url_get_emails, $params);
+        // $res = \Http::withHeaders($this->api_headers)->get($this->url_get_emails, $params);
+
+         // Build the query string from the parameters
+        $queryString = http_build_query($params);
+        
+        // Construct the full URL
+        $fullUrl = $this->url_get_emails . '?' . $queryString;
+        
+        // Log the full URL (you can replace this with any logging mechanism you use)
+        \Log::info('Full URL: ' . $fullUrl);
+        
+        // Make the HTTP request
+        $res = \Http::withHeaders($this->api_headers)->get($fullUrl);
+
+        // $res = \Http::withHeaders($this->api_headers)->get($this->url_get_emails, $params);
 
         return $res->object();
     }
