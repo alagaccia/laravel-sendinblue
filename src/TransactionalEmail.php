@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 class TransactionalEmail extends Sendinblue
 {
     protected $url;
+    protected $url_get_emails;
     protected $template_url;
 
     public function __construct()
@@ -14,6 +15,7 @@ class TransactionalEmail extends Sendinblue
         parent::__construct();
 
         $this->url = $this->api_base_url . 'smtp/email';
+        $this->url_get_emails = $this->url_get_emails . 'smtp/emails';
         $this->template_url = $this->api_base_url . 'smtp/templates';
     }
 
@@ -43,7 +45,7 @@ class TransactionalEmail extends Sendinblue
      */ 
     public function getEmails($params)
     {
-        $res = \Http::withHeaders($this->api_headers)->get($this->url, $params);
+        $res = \Http::withHeaders($this->api_headers)->get($this->url_get_emails, $params);
 
         return $res->object();
     }
@@ -54,7 +56,7 @@ class TransactionalEmail extends Sendinblue
      */ 
     public function getEmail($uuid)
     {
-        $res = \Http::withHeaders($this->api_headers)->get($this->url . '/' . $uuid);
+        $res = \Http::withHeaders($this->api_headers)->get($this->url_get_emails . '/' . $uuid);
 
         return $res->object();
     }
