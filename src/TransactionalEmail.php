@@ -15,7 +15,7 @@ class TransactionalEmail extends Sendinblue
         parent::__construct();
 
         $this->url = $this->api_base_url . 'smtp/email';
-        $this->url_get_emails = $this->url_get_emails . 'smtp/emails';
+        $this->url_get_emails = $this->api_base_url . 'smtp/emails';
         $this->template_url = $this->api_base_url . 'smtp/templates';
     }
 
