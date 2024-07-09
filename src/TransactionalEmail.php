@@ -62,7 +62,9 @@ class TransactionalEmail extends Sendinblue
 
             \Log::info("new url", ['url' => "https://api.brevo.com/v3/smtp/emails?messageId={$params['messageId']}"]);
 
-            $response = $client->request('GET', "https://api.brevo.com/v3/smtp/emails?messageId={$params['messageId']}", $this->api_headers);
+            $response = $client->request('GET', "https://api.brevo.com/v3/smtp/emails?messageId={$params['messageId']}", [
+                'headers' => $this->api_headers
+            ]);
 
             \Log::info("body red", ['res' => $response->getBody()]);
 
