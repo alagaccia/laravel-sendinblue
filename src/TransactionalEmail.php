@@ -47,7 +47,7 @@ class TransactionalEmail extends Sendinblue
     {
         try {
             $res = \Http::withHeaders($this->api_headers)->get($this->url_get_emails, $params);
-            return $res;
+            return $res->object();
         } catch ( \Exception $e) {
             return $e->getMessage();
         }
