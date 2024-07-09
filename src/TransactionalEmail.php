@@ -66,7 +66,8 @@ class TransactionalEmail extends Sendinblue
                 'headers' => $this->api_headers
             ]);
 
-            \Log::info("body red", ['res' => $response->getBody()]);
+            \Log::info("body res", ['res' => $response]);
+            \Log::info("body res body", ['res' => $response->getBody()]);
 
             return $response->getBody();
 
