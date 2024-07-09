@@ -17,11 +17,12 @@ class TransactionalEmail extends Sendinblue
         $this->template_url = $this->api_base_url . 'smtp/templates';
     }
 
-    public function send($to, $templateId = null, $htmlContent = null, $params = null, $tags = null)
+    /*
+     * method: POST
+     */ 
+    public function send($to, $templateId = null, $params = null, $tags = null)
     {
-        $method_url = $this->url;
-
-        $res = \Http::withHeaders($this->api_headers)->post($method_url, [
+        $res = \Http::withHeaders($this->api_headers)->post($this->url, [
                 'to' => [
                     [
                         'email' => $to['email'],
@@ -29,8 +30,6 @@ class TransactionalEmail extends Sendinblue
                     ]
                 ],
                 'templateId' => $templateId ?? null,
-                'htmlContent' => $htmlContent ?? null,
-                'textContent' => $htmlContent ? strip_tags($htmlContent) : null,
                 'params' => $params,
                 'tags' => $tags,
             ]);
@@ -38,9 +37,24 @@ class TransactionalEmail extends Sendinblue
         return $res->object();
     }
 
-    public function getTemplateInformation($template_id)
+    /*
+     * method: GET
+     * return: { count: x, transactionalEmails: {email, subject, messageId, uuid, date, templateId, from, tags[]} }
+     */ 
+    public function getEmails($params)
     {
-        $res = \Http::withHeaders($this->api_headers)->get("{$this->template_url}/{$template_id}");
+        $res = \Http::withHeaders($this->api_headers)->get($this->url, $params);
+
+        return $res->object();
+    }
+
+    /*
+     * method: GET
+     * return: { email, subject, date, events[], body, attachmentCount, templateId }
+     */ 
+    public function getEmail($uuid)
+    {
+        $res = \Http::withHeaders($this->api_headers)->get($this->url . '/' . $uuid);
 
         return $res->object();
     }
