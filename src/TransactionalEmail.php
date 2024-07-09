@@ -57,20 +57,6 @@ class TransactionalEmail extends Sendinblue
         \Log::info('Full URL: ' . $fullUrl);
         
         try {
-
-            $client = new \GuzzleHttp\Client();
-
-            \Log::info("new url", ['url' => "https://api.brevo.com/v3/smtp/emails?messageId={$params['messageId']}"]);
-
-            $response = $client->request('GET', "https://api.brevo.com/v3/smtp/emails?messageId={$params['messageId']}", [
-                'headers' => $this->api_headers
-            ]);
-
-            \Log::info("body res", ['res' => $response]);
-            \Log::info("body res body", ['res' => $response->getBody()]);
-
-            return $response->getBody();
-
             $res = \Http::withHeaders($this->api_headers)->get($fullUrl);
             return $res;
         } catch ( \Exception $e) {
