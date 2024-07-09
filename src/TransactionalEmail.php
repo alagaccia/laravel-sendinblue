@@ -56,6 +56,7 @@ class TransactionalEmail extends Sendinblue
         // Log the full URL (you can replace this with any logging mechanism you use)
         \Log::info('Full URL: ' . $fullUrl);
         
+        
         try {
             $res = \Http::withHeaders($this->api_headers)->get($fullUrl);
             return $res;
