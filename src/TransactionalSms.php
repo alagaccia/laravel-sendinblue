@@ -16,18 +16,24 @@ class TransactionalSms extends Sendinblue
     }
 
     
-    public function send($number, $content)
+    public function send($number, $content, $tag = null)
     {
         $method_url = $this->url;
 
-        $res = \Http::withHeaders($this->api_headers)->post($method_url, [
-                'type' => 'transactional',
-                'unicodeEnabled' => false,
-                'sender' => $this->sms_sender_name,
-                'recipient' => str_replace(' ', '', $number),
-                'content' => $content,
-                'webUrl' => $this->sms_webhook,
-            ]);
+        $data = [
+            'type' => 'transactional',
+            'unicodeEnabled' => false,
+            'sender' => $this->sms_sender_name,
+            'recipient' => str_replace(' ', '', $number),
+            'content' => $content,
+            'webUrl' => $this->sms_webhook,
+        ];
+
+        if ($tag) {
+            $data['tag'] = $tag;
+        }
+
+        $res = \Http::withHeaders($this->api_headers)->post($method_url, $data);
 
         if ( $this->setting_sms_counter_column_name ) {
             DB::table($this->setting_table_name)
