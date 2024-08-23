@@ -49,6 +49,11 @@ class Sendinblue
         ];
     }
 
+    public function get_api_headers()
+    {
+        return $this->api_headers;
+    }
+
     public function set_setting_table_name()
     {
         $this->setting_table_name = config('sendinblue.SETTING_TABLE_NAME') ?? env('SENDINBLUE_SETTING_TABLE_NAME');
