@@ -13,7 +13,7 @@ class SendinbluServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/sendinblue.php' => config_path('sendinblue.php'),
+            __DIR__.'/../config/brevo.php' => config_path('brevo.php'),
         ]);
     }
 }
