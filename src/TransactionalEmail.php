@@ -85,12 +85,20 @@ class TransactionalEmail extends Sendinblue
                     'offset' => $offset,
                 ]);
 
+                \Log::info("email response", ['r' => $response]);
+
                 if ($response->successful()) {
+                    \Log::info("email successful", ['r' => $response]);
+
                     $data = $response->json();
                     $contacts = $data['contacts'] ?? [];
 
                     foreach ($contacts as $contact) {
+                        \Log::info("email contact", ['r' => $contact['email']]);
                         if (($contact['email'] ?? null) === $email) {
+
+                            \Log::info("email trovata");
+
                             $found = true;
                             break 2; // Esci dai cicli foreach e do-while
                         }
@@ -106,11 +114,11 @@ class TransactionalEmail extends Sendinblue
                 }
             } while (count($contacts) === $limit); // Continua finché ci sono esattamente 'limit' contatti, suggerendo che ci potrebbero essere altre pagine
 
+            \Log::info("ritorna $found", ['r' => $found]);
             return $found;
         } catch (\Exception $e) {
             throw new \Exception('Exception during Brevo transactional blacklist check: ' . $e->getMessage());
             return false;
         }
     }
-
 }
