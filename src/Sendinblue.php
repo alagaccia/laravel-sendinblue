@@ -15,6 +15,7 @@ class Sendinblue
     protected $list_id;
 
     protected const API_BASE_URL = "https://api.brevo.com/v3/";
+    public const VERSION = '0.35';
 
     public function __construct()
     {
