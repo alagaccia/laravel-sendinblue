@@ -74,7 +74,7 @@ class TransactionalEmail extends Sendinblue
      */ 
     public function isTransactionalEmailBlocked(string $email): bool
     {
-        $limit = 1000; // Imposta il limite massimo per pagina
+        $limit = 50; // Imposta il limite massimo per pagina
         $offset = 0;
         $found = false;
 
